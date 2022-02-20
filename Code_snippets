@@ -1,0 +1,94 @@
+https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E85312&maxBedrooms=3&minBedrooms=2&maxPrice=800000&minPrice=600000&radius=0.25&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=
+
+https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E85312&maxBedrooms=3&minBedrooms=2&maxPrice=800000&minPrice=600000&radius=0.25&index=0&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=
+
+https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E85312&maxBedrooms=3&minBedrooms=2&maxPrice=800000&minPrice=600000&radius=0.25&index=48&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=
+
+https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E85312&maxBedrooms=3&minBedrooms=2&maxPrice=800000&minPrice=600000&radius=0.25&index=72&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=
+
+https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E85312&maxBedrooms=3&minBedrooms=2&maxPrice=800000&minPrice=600000&radius=0.25&index=96&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=
+
+
+
+
+<button class="pagination-button pagination-direction pagination-direction--next" data-bind="click: goto.bind($data, 'next'), disable : isOnLastPage" data-test="pagination-next" title="Next page">
+
+
+<button class="pagination-button pagination-direction pagination-direction--next" data-bind="click: goto.bind($data, 'next'), disable : isOnLastPage" data-test="pagination-next" title="Next page">
+
+pagination-button pagination-direction pagination-direction--next
+
+formAction: "https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E85312&maxBedrooms=3&minBedrooms=2&maxPrice=800000&minPrice=600000&radius=0.25&index=24&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords="
+
+
+#l-container > div.l-propertySearch-paginationWrapper > div > div > div > div:nth-child(3) > button
+
+
+driver = webdriver.Firefox()
+driver.get("http://somedomain/url_that_delays_loading")
+try:
+    element = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, "myDynamicElement"))
+    )
+finally:
+    driver.quit()
+
+----------
+
+    pages_remaining = True 
+ 
+while pages_remaining: 
+    #DO YOUR THINGS WITHIN THE PAGE 
+ 
+    try: 
+        #Checks if there are more pages with links 
+        next_link = driver.find_element_by_xpath('//a[img/@title="next"]') 
+        next_link.click() 
+        time.sleep(30) 
+    except NoSuchElementException: 
+        rows_remaining = False 
+
+
+#l-container > div.l-propertySearch-paginationWrapper > div > div > div > div:nth-child(3) > button
+
+
+
+
+
+
+<button class="pagination-button pagination-direction pagination-direction--prev" data-bind="click: goto.bind($data, 'previous'), disable : isOnFirstPage" data-test="pagination-previous" title="Previous page" disabled="">
+       
+
+
+
+
+#Attempt to iterate through pages 
+def get_house_links(url, driver, pages=4):
+    house_links=[]
+    driver.get(url)
+    for i in range(pages):
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        listings = soup.find_all("a", class_="propertyCard-link property-card-updates")
+        page_data = ['https://www.rightmove.co.uk'+row['href'] for row in listings]
+        house_links.append(page_data)
+        time.sleep(np.random.lognormal(0,1))
+        next_button = soup.find_all("button", class_="pagination-button pagination-direction pagination-direction--next")
+        next_page = driver.find_element_by_css_selector("#l-container > div.l-propertySearch-paginationWrapper > div > div > div > div:nth-child(3) > button")
+        if i<19:
+            next_page.click()
+    return house_links
+
+
+
+    def get_links(url, driver, pages=4):
+
+    list_of_links = []
+
+    # how many pages should we scroll through ? currently set to 20
+    for i in range(1,4):
+        r = requests.get(root_url+"&page={}.".format(i))
+        soup = BeautifulSoup(r.content, 'html.parser')
+        new_links = soup.find_all("li", {"class": "padding-all"})
+        list_of_links.extend(new_links)
+
+    print(list_of_links)
